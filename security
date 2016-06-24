@@ -25,7 +25,7 @@
                 "iam:UpdateLoginProfile"
             ],
             "Resource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPTHENS:user/${aws:username}"
+                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
             ]
         },
         {
@@ -36,12 +36,12 @@
                 "iam:ListMFADevices"
             ],
             "Resource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPTHENS:mfa/*",
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPTHENS:user/${aws:username}"
+                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:mfa/*",
+                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
             ]
         },
         {
-            "Sid": "AllowIndividualUserToManageThierMFA",
+            "Sid": "AllowIndividualUserToManageTheirMFA",
             "Effect": "Allow",
             "Action": [
                 "iam:CreateVirtualMFADevice",
@@ -51,8 +51,8 @@
                 "iam:ResyncMFADevice"
             ],
             "Resource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPTHENS:mfa/${aws:username}",
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPTHENS:user/${aws:username}"
+                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:mfa/${aws:username}",
+                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
             ]
         },
         {
@@ -100,8 +100,8 @@
                 "iam:UpdateLoginProfile"
             ],
             "NotResource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPTHENS:mfa/${aws:username}",
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPTHENS:user/${aws:username}"
+                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:mfa/${aws:username}",
+                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
             ],
             "Condition": {
                 "Null": {
