@@ -7,25 +7,28 @@
             "Action": [
                 "iam:ListAccountAliases",
                 "iam:GetAccountPasswordPolicy",
-                "iam:ListUsers"
+                "iam:ListUsers",
+                "iam:GetAccountSummary"
             ],
             "Resource": [
                 "*"
             ]
         },
         {
-            "Sid": "AllowIndividualUserToSeeTheirAccountInformation",
+            "Sid": "AllowIndividualUserToSeeTheirAccountInformationAndCreateAccessKey",
             "Effect": "Allow",
             "Action": [
                 "iam:ChangePassword",
                 "iam:CreateLoginProfile",
                 "iam:DeleteLoginProfile",
-                "iam:GetAccountSummary",
+                "iam:GetAccountPasswordPolicy",
                 "iam:GetLoginProfile",
-                "iam:UpdateLoginProfile"
+                "iam:UpdateLoginProfile",
+                "iam:CreateAccessKey",
+                "iam:ListAccessKeys"
             ],
             "Resource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
+                "arn:aws:iam::PASTE_ACCOUNT_NUMBER:user/${aws:username}"
             ]
         },
         {
@@ -36,8 +39,8 @@
                 "iam:ListMFADevices"
             ],
             "Resource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:mfa/*",
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
+                "arn:aws:iam::PASTE_ACCOUNT_NUMBER:mfa/*",
+                "arn:aws:iam::PASTE_ACCOUNT_NUMBER:user/${aws:username}"
             ]
         },
         {
@@ -51,8 +54,8 @@
                 "iam:ResyncMFADevice"
             ],
             "Resource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:mfa/${aws:username}",
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
+                "arn:aws:iam::PASTE_ACCOUNT_NUMBER:mfa/${aws:username}",
+                "arn:aws:iam::PASTE_ACCOUNT_NUMBER:user/${aws:username}"
             ]
         },
         {
@@ -74,7 +77,9 @@
                 "iam:GetAccountPasswordPolicy",
                 "iam:GetAccountSummary",
                 "iam:GetLoginProfile",
-                "iam:UpdateLoginProfile"
+                "iam:UpdateLoginProfile",
+                "iam:CreateAccessKey",
+                "iam:ListAccessKeys"
             ],
             "Resource": "*",
             "Condition": {
@@ -95,13 +100,15 @@
                 "iam:ChangePassword",
                 "iam:CreateLoginProfile",
                 "iam:DeleteLoginProfile",
-                "iam:GetAccountSummary",
+                "iam:GetAccountPasswordPolicy",
                 "iam:GetLoginProfile",
-                "iam:UpdateLoginProfile"
+                "iam:UpdateLoginProfile",
+                "iam:CreateAccessKey",
+                "iam:ListAccessKeys"
             ],
             "NotResource": [
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:mfa/${aws:username}",
-                "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/${aws:username}"
+                "arn:aws:iam::PASTE_ACCOUNT_NUMBER:mfa/${aws:username}",
+                "arn:aws:iam::PASTE_ACCOUNT_NUMBER:user/${aws:username}"
             ],
             "Condition": {
                 "Null": {
